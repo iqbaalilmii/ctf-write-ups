@@ -1,0 +1,79 @@
+Writeup: ICMP Tunnelling & Zlib Reassembly
+Category: Digital Forensics / Network
+Difficulty: Hard
+
+
+1. Initial Analysis
+The challenge provided a network capture file (PCAP) containing a lot of ICMP (Ping) traffic.
+Wireshark Observation: When looking at the Data Payload of each packet, I noticed a weird Hex string.
+Magic Bytes: Most of the data started with 78 9c. In forensics, these are the "Magic Bytes" for Zlib Compression.
+
+The Problem: If I dumped the data directly, the order was completely random. The flag wouldn't make sense if read from top to bottom.
+
+2. Finding the Pattern
+After digging deeper into the hex, I noticed a secret pattern. Every payload had one extra byte (2 hex digits) at the very end.
+
+Example: 789c...[20], 789c...[03], 789c...[17].
+
+Hypothesis: This last byte is an Index (Sequence Number). The sender sent the data out of order to confuse us. I needed to sort them before decompressing.
+
+3. The Solution (Python Scripting)
+Since there were many packets, doing it manually was impossible. I wrote a Python script to automate the Parsing, Sorting, and Decompressing process.
+
+import zlib
+import binascii
+import os
+
+# Create a folder for the results
+os.makedirs('extracted_frames', exist_ok=True)
+
+def solve():
+    # 'icmp.txt' contains the hex payloads from Wireshark
+    with open('icmp.txt', 'r') as f:
+        lines = [l.strip() for l in f.readlines() if l.strip()]
+
+    # Step 1: Extract and Index
+    indexed_data = []
+    for line in lines:
+        try:
+            raw_bytes = binascii.unhexlify(line)
+            
+            # The last byte is the index
+            index = raw_bytes[-1] 
+            
+            # The rest is the Zlib payload
+            zlib_payload = raw_bytes[:-1]
+            
+            indexed_data.append((index, zlib_payload))
+        except:
+            continue
+
+    # Step 2: Sort based on the index (0, 1, 2...)
+    indexed_data.sort(key=lambda x: x[0])
+
+    # Step 3: Decompress and Save
+    for idx, data in indexed_data:
+        try:
+            # Each packet is actually one small PNG image
+            image_content = zlib.decompress(data)
+            
+            filename = f'extracted_frames/frame_{idx:03d}.png'
+            with open(filename, 'wb') as f_out:
+                f_out.write(image_content)
+            print(f"[+] Extracted index {idx}")
+        except Exception as e:
+            print(f"[-] Error at index {idx}: {e}")
+
+if __name__ == "__main__":
+    solve()
+
+4. Final Result
+After running the script, a folder named extracted_frames appeared. It contained many PNG files. Each file showed one single character.
+By looking at the images in order (frame_000.png, frame_001.png, etc.), the flag finally appeared!
+
+Flag: {easy_pcap_for_us_all_00efd3a4cc}
+
+5. What I Learned
+Network Stealth: Data can be hidden inside common protocols like ICMP (Data Exfiltration).
+Order Matters: In networking, packets often arrive "out of order," and we must use indices to rebuild them.
+Python is Key: Being able to code is a superpower in CTF forensics. It turns a "stuck" situation into a "solved" one.
