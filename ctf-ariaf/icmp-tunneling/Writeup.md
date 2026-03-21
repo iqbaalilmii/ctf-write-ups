@@ -6,7 +6,7 @@ Difficulty: Hard
 
 The challenge provided a network capture file (PCAP) containing a lot of ICMP (Ping) traffic. 
 When looking at the Data Payload of each packet, I noticed a weird Hex string. All the data started with 78 9c. In forensics, these are the "Magic Bytes" for Zlib Compression.
-<img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/c686cef9-6edc-4a28-868c-73a6717b9c59" />
+<img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/718a576b-815a-4d6f-963c-daa96acb094b" />
 
 And after I dumped each of the icmp packets, I got a zlib files, and I uncompress it all it gives me a png that contains each flag character.
 The problem is, if I dumped the data directly, the order was completely random, I tried by sorting it using time on Wireshark, but it still gives a random order.
