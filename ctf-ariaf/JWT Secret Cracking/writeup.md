@@ -73,7 +73,7 @@ I completely deleted the existing token cookie to clear any session restrictions
 
 * Name: token
 
-Value: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYW5hZmxhZ3dveXl5eXkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzQzNTI1MTksImV4cCI6MTc3NDM1NjExOX0.BOfYCqMfyaVS4KoMFpRLOo2FRptCn1dj5bEcJ8C5K30`
+* Value:`eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYW5hZmxhZ3dveXl5eXkiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NzQzNTI1MTksImV4cCI6MTc3NDM1NjExOX0.BOfYCqMfyaVS4KoMFpRLOo2FRptCn1dj5bEcJ8C5K30`
 
 * I ensured the path was set to / and then hit Enter.
 
