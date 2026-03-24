@@ -47,7 +47,7 @@ hashcat -m 16500 target.txt wordlist.txt -r /usr/share/hashcat/rules/T0XlC.rule
 After a few seconds and millions of attempts, Hashcat successfully cracked the secret!
 
 <img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/6d2025da-675f-4e66-8679-0764a6360ddc" />
-Secret Key: `euphonium@!`
+Secret Key: euphonium@!
 
 The secret key was not in the raw wordlist. I used the `T0XlC.rule` to perform a hybrid attack, which dynamically appended special characters and symbols to the base words. This allowed Hashcat to discover the correct secret: `euphonium@!`.
 
