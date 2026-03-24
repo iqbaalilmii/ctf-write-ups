@@ -28,11 +28,11 @@ When I logged in, the web gave me a session cookie named token. I decoded it on 
 
 ```
 {
-  "sub": "abcdefg",
+  "sub": "manaflagwoyyyy",
   "role": "user"
 }
 ```
-<img width="1919" height="1065" alt="image" src="https://github.com/user-attachments/assets/72f2c1ed-60fc-4ba8-b709-2cf1b229f56a" />
+<img width="1919" height="1066" alt="image" src="https://github.com/user-attachments/assets/caad180b-1b6d-4783-a4bc-970ae2f99769" />
 
 The algorithm used was `HS256`, which means I needed a secret key to sign a new token with the "role": "admin" privilege.
 
