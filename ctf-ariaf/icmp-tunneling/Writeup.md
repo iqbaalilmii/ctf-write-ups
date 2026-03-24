@@ -1,4 +1,4 @@
-Writeup: ICMP Steganography & Zlib Reassembly
+# ICMP Steganography & Zlib Reassembly
 
 Category: Digital Forensics / Network 
 
