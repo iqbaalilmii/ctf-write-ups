@@ -48,6 +48,7 @@ After a few seconds and millions of attempts, Hashcat successfully cracked the s
 
 <img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/6d2025da-675f-4e66-8679-0764a6360ddc" />
 Secret Key: `euphonium@!`
+
 The secret key was not in the raw wordlist. I used the `T0XlC.rule` to perform a hybrid attack, which dynamically appended special characters and symbols to the base words. This allowed Hashcat to discover the correct secret: `euphonium@!`.
 
 **4. Privilege Escalation**
