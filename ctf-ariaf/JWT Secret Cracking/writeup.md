@@ -9,6 +9,7 @@ Difficulty: Hard
 Target: https://euphonium-fgte.vercel.app
 
 **1. Initial Recon (OSINT)**
+
 The challenge provided a dashboard and an image of Kumiko Oumae (the protagonist of Hibike! Euphonium). The hint mentioned that the secret key involves "Personal info + Hobbies" of the character.
 
 I did some quick OSINT on the character:
@@ -22,6 +23,7 @@ I did some quick OSINT on the character:
 * Favorite Item: Cactus (Euphorbia obesa) / Tubi-kun
 
 **2. JWT Analysis**
+
 When I logged in, the web gave me a session cookie named token. I decoded it on jwt.io and found the payload:
 
 ```
@@ -35,6 +37,7 @@ When I logged in, the web gave me a session cookie named token. I decoded it on 
 The algorithm used was `HS256`, which means I needed a secret key to sign a new token with the "role": "admin" privilege.
 
 **3. Cracking the Secret (Brute Force)**
+
 Since the hint telling me that you need to a custom wordlist, i knew the secret was related to Kumiko's hobbies, I created a custom Python script to generate a massive wordlist. I combined keywords like `Kumiko`, `Euphonium`, `Music`, and `Kitauji`.
 
 I used Hashcat (v7.1.2) on my Linux environment (WSL).
@@ -48,6 +51,7 @@ Secret Key: `euphonium@!`
 The secret key was not in the raw wordlist. I used the `T0XlC.rule` to perform a hybrid attack, which dynamically appended special characters and symbols to the base words. This allowed Hashcat to discover the correct secret: `euphonium@!`.
 
 **4. Privilege Escalation**
+
 I went back to jwt.io and performed the following steps:
 
 Pasted the original token.
@@ -77,7 +81,8 @@ Value: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYW5hZmxhZ3dveXl5eXkiLCJ
 
 Flag : `FGTE{Jwt_3uph0n1um_Kum1k0_4ever}`
 
-Lessons Learned
+**Lessons Learned**
+
 * Don't Underestimate "Weak" Secrets: Even if a secret key looks unique (like a character's hobby), if it’s based on public info (OSINT), it’s not safe. A hacker with a good wordlist and a powerful laptop can crack it in seconds.
 
 * The Power of Hashcat Rules: I learned that a raw wordlist isn't enough. Using rules like T0XlC.rule is a game changer because it tries variations (like adding @!) that aren't in the original file. Brute force is all about patterns, not just guessing words.
