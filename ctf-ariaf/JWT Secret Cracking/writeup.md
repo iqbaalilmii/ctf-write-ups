@@ -55,13 +55,13 @@ The secret key was not in the raw wordlist. I used the `T0XlC.rule` to perform a
 
 I went back to jwt.io and performed the following steps:
 
-Pasted the original token.
+* Pasted the original token.
 
-Modified the payload from `"role": "user"` to `"role": "admin"`.
+* Modified the payload from `"role": "user"` to `"role": "admin"`.
 
-Entered the secret key `euphonium@!` in the signature box.
+* Entered the secret key `euphonium@!` in the signature box.
 
-Copied the new Admin Token.
+* Copied the new Admin Token.
 
 **5. Final Injection**
 
