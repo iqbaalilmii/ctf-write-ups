@@ -17,6 +17,7 @@ dari output plugin `windows.info`, bisa disimpulkan, ini file di dump dari Windo
 Disini aku langsung aja pake plugin  `windows.filescan` dari volatility3 dan grep "desktop" tapi sayangnya ga dapet apa apa
 
 <img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/1933cda5-fd21-4d57-ac61-cb0512ca9832" />
+
 ```
 vol2 -f memdump.mem --profile=Win10x64_19041 mftparser | grep -i "desktop"
 ```
