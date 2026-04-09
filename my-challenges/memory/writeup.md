@@ -71,6 +71,7 @@ disini aku langsung aja pake plugin windows.envars volatility3 buat check env va
 dan outputnya langsung keliatan image data, key, dan ivnya dalam bentuk base64
 
 <img width="1913" height="988" alt="image" src="https://github.com/user-attachments/assets/9ed7ca58-3f1f-4bea-bc5d-a73eb0a34590" />
+
 langsung aja taro di cyberchef, dan mendapatkan gambar flag ini
 
 <img width="1115" height="272" alt="image" src="https://github.com/user-attachments/assets/5e6e2391-0920-42d0-be3c-bcaa69af7b4d" />
