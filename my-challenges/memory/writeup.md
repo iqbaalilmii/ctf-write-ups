@@ -14,4 +14,8 @@ Pertama-tama, aku mau kenal sama sistem memory dump ini dulu, aku pake plugin wi
 dari output plugin `windows.info`, bisa disimpulkan, ini file di dump dari Windows 10, buildnya 19041, dan 64 bit, jadi, profile untuk volatility2 yang cocok adalah `Win10x64_19041`
 
 <img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/7060cc63-7844-480a-aae1-ad268f46fccf" />
-Disini aku langsung aja pake plugin  `windows.filescan` dari volatility3 dan grep "desktop"
+Disini aku langsung aja pake plugin  `windows.filescan` dari volatility3 dan grep "desktop" tapi sayangnya ga dapet apa apa
+
+<img width="1920" height="1128" alt="image" src="https://github.com/user-attachments/assets/1933cda5-fd21-4d57-ac61-cb0512ca9832" />
+tapi, pas aku coba pake plugin mftparser dari volatility2, aku nemu `flag.enc`
+
