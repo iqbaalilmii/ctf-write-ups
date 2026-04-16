@@ -5,7 +5,6 @@ Target: Linux Memory Dump (memhunt.mem)
 
 Category: Memory Forensics & Cryptography
 
-Difficulty: Hard
 
 Pertama, aku coba pake plugin windows.info, tapi gabisa, dan aku coba pake plugin banners.Banners buat nentuin kernel linux yang spesifik karna volatility butuh symbol table buat baca struktur data di memory.
 ```
