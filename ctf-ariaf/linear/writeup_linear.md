@@ -869,6 +869,6 @@ gdb ./linear
 
 ---
 
-*Writeup by: [your handle]*  
+
 *Challenge: linear — FGTE CTF, Reverse Engineering*  
 *Flag: `NETCOMP{S1MD_rev_so_pa1nful_ehh}`*
