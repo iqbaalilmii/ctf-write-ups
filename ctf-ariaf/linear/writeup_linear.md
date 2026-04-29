@@ -856,10 +856,9 @@ Easter egg yang sempurna — pembuat soal mengakui bahwa mereverse kode SIMD/AVX
 
 ### 10.4 Pelajaran Penting
 
-> **Selalu parse hex secara hati-hati.** Dalam challenge ini, dua konstanta penting memiliki hex yang corrupt (63 char dan 65 char). Jika langsung dipercaya tanpa verifikasi, solver akan gagal total. Cara terbaik: **dump langsung dari binary menggunakan GDB atau readelf**, bukan mengandalkan screenshot IDA.
+> **Selalu parse hex secara hati-hati.** Dalam challenge ini, dua konstanta penting memiliki hex yang corrupt (63 char dan 65 char). Jika langsung dipercaya tanpa verifikasi, solver akan gagal total. Cara terbaik: **dump langsung dari binary menggunakan GDB atau readelf**.
 
 ```bash
-# Cara dump .rodata langsung dari binary (lebih reliable dari screenshot):
 readelf -x .rodata linear
 
 # Atau dengan GDB:
